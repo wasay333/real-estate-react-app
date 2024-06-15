@@ -1,11 +1,12 @@
+import React from 'react'
 import {
     MapContainer,
     TileLayer,
   } from 'react-leaflet'
   import "leaflet/dist/leaflet.css"
-import React from 'react'
-import '../map/map.scss'
 import Pin from '../pin/Pin'
+import '../map/map.scss'
+
 const Map = ({items}) => {
   return (
 <MapContainer center={[51.505, -0.09]} zoom={7} scrollWheelZoom={false} className='map'>

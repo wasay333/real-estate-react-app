@@ -9,6 +9,7 @@ import Homepage from './routes/homepage/Homepage'
 import Listpage from './routes/listpage/Listpage'
 import Layout from './routes/layout/Layout'
 import Singlepage from './routes/singlepage/Singlepage'
+import Profile from './routes/profile/Profile'
 function App() {
   const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ element:<Homepage/>
  {
   path:'/:id',   
  element:<Singlepage/>  
+ },
+ {
+  path:'/profile',   
+ element:<Profile/>  
  }
 ]
   } 

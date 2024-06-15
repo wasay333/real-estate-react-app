@@ -1,7 +1,9 @@
+@import '../../responsive.scss';
 .filter{
     display: flex;
     flex-direction:column;
     gap: 10px;
+
     h1{
         font-weight: 300;
         font-size: 24px;
@@ -30,6 +32,18 @@
         display: flex;
         justify-content: space-between;
         gap: 20px;
+   @include md{
+display: grid;
+grid-template-columns: repeat(3,1fr);
+}
+@include sm{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-content: center; /* Center the grid horizontally */
+    align-content: center; /* Center the grid vertically */
+    justify-items: center; /* Center items horizontally */
+    align-items: center; 
+    }
         button{
             width: 100px;
             padding: 10px;
