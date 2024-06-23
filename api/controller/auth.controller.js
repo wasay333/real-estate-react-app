@@ -5,7 +5,6 @@ export const register = async(req, res) =>{
     //db operation
 const {username, password, email} = req.body
 try{
-
     // hash the password
 const hashedPassword = await bycrypt.hash(password, 10)
 const newUser = await prisma.user.create({
@@ -15,7 +14,7 @@ const newUser = await prisma.user.create({
 password:hashedPassword
 }
 });
-console.log(newUser)
+// console.log(newUser)
 res.status(201).json({ message:"User has been created successfully!"})
 }catch{
     res.status(500).json({ message:"Failed  to create user!"})
@@ -38,14 +37,16 @@ if(!isPasswordValid) return res.status(401).json({messege:"Invalid Credentials!"
     // res.setHeader("Set-Cookie", "test=" + "myValue").json("success")
     const age = 1000 * 60 * 60 * 24 * 7;
 const token = jwt.sign({
-    id : user.id,    
+    id : user.id,
+    isAdmin: false,    
 }, process.env.JWT_SECRET_KEY,
 { expiresIn: age})
+const {password:userPassword, ...userInfo} = user
     res.cookie('token',token,{
 httpOnly:true,
 // secure:true
 maxAge:age
-}).status(200).json({message:"Login Succussful!"})
+}).status(200).json({userInfo})
 } catch (error) {
     console.log(error)
 res.status(500).json({message:'failed to login!'})
